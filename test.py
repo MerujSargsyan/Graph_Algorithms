@@ -1,5 +1,5 @@
 from GraphLib import *
-from Tree import Tree
+from Tree import *
 
 vertexSet = [Vertex(1), Vertex(2), Vertex(3), Vertex(4), Vertex(5), 
             Vertex(6)]
@@ -11,5 +11,5 @@ edgeSet = [Edge(vertexSet[0],vertexSet[1]),
             Edge(vertexSet[3],vertexSet[4])]
 graph = Graph(vertexSet, edgeSet)
 
-tree = Tree(graph)
-tree.printTree()
+tree1 = BFSTree(graph)
+tree2 = DFSTree(graph)
