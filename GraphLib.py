@@ -1,6 +1,7 @@
 class Vertex:
     def __init__(self, name):
         self.name = name
+        self.value = int(name)
         self.neighbors = []
 
     def addNeighbor(self, neighborV):
@@ -8,6 +9,10 @@ class Vertex:
 
     def hasNeighbor(self, v):
         return v in self.neighbors
+
+def sortVertecies(vertecies):
+    #returns the vertecies from smallest to largest
+    return sorted(vertecies, key=lambda x: x.value)
 
 class Edge:
     def __init__(self, v1, v2):

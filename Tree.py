@@ -2,7 +2,7 @@ from GraphLib import *
 
 class DFSTree:
     def __init__(self, graph):
-        self.vertexSet = graph.vertexSet
+        self.vertexSet = sortVertecies(graph.vertexSet)
         self.edgeSet = []
         self.constructDFSTree()
 
@@ -12,7 +12,7 @@ class DFSTree:
         self.search(root, treeVertecies)
     
     def search(self, root, treeVertecies):
-        for vertex in root.neighbors:
+        for vertex in sortVertecies(root.neighbors):
             if vertex not in treeVertecies:
                 treeVertecies.append(vertex)
                 self.edgeSet.append(Edge(root,vertex))
@@ -26,7 +26,7 @@ class DFSTree:
 
 class BFSTree:
     def __init__(self, graph):
-        self.vertexSet = graph.vertexSet
+        self.vertexSet = sortVertecies(graph.vertexSet)
         self.edgeSet = []
         self.depthMap = {}
         self.constructBFSTree()
@@ -38,7 +38,7 @@ class BFSTree:
     
     def search(self, root, treeVertecies, depth):
         addedVertecies = []
-        for vertex in root.neighbors:
+        for vertex in sortVertecies(root.neighbors):
             if vertex not in treeVertecies:
                 treeVertecies.append(vertex)
                 addedVertecies.append(vertex)
