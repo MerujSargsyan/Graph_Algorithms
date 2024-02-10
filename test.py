@@ -12,4 +12,4 @@ edgeSet = [Edge(vertexSet[0],vertexSet[1]),
 graph = Graph(vertexSet, edgeSet)
 
 tree1 = BFSTree(graph)
-tree2 = DFSTree(graph)
+tree1.printDepthMap()
