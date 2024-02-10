@@ -4,20 +4,37 @@ class DFSTree:
     def __init__(self, graph):
         self.vertexSet = sortVertecies(graph.vertexSet)
         self.edgeSet = []
+        self.depthMap = {}
         self.constructDFSTree()
 
     def constructDFSTree(self):
         root = self.vertexSet[0]
         treeVertecies = [root]
-        self.search(root, treeVertecies)
+        self.depthMap[0] = [root]
+        self.search(root, treeVertecies, 0)
     
-    def search(self, root, treeVertecies):
+    def search(self, root, treeVertecies, depth):
         for vertex in sortVertecies(root.neighbors):
             if vertex not in treeVertecies:
                 treeVertecies.append(vertex)
                 self.edgeSet.append(Edge(root,vertex))
-                self.search(vertex, treeVertecies)
-    
+                #if layer is empty, new array is created,
+                #otherwise, the array at the level is returned
+                self.depthMap.setdefault(depth + 1, []).append(vertex)
+                self.search(vertex, treeVertecies, depth + 1)
+
+    def printDepthMap(self):
+        for key, value in self.depthMap.items():
+            print(f"{key}: {self.printValueArray(value)}")
+        print("\n")
+
+    def printValueArray(self, value):
+        outputStr = "["
+        for vertex in value:
+            outputStr += f"{vertex.name}, "
+        
+        return outputStr + "]"
+
     def printTree(self):
         for vertex in self.vertexSet:
             print(f"{vertex.name} ")
@@ -34,6 +51,7 @@ class BFSTree:
     def constructBFSTree(self):
         root = self.vertexSet[0]
         treeVertecies = [root]
+        self.depthMap[0] = [root]
         self.search(root, treeVertecies, 0)
     
     def search(self, root, treeVertecies, depth):
@@ -60,6 +78,7 @@ class BFSTree:
     def printDepthMap(self):
         for key, value in self.depthMap.items():
             print(f"{key}: {self.printValueArray(value)}")
+        print("\n")
     
     def printValueArray(self, value):
         outputStr = "["
