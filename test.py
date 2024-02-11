@@ -1,5 +1,6 @@
 from GraphLib import *
 from Tree import *
+from Graph import Graph
 
 vertexSet = [Vertex(1), Vertex(2), Vertex(3), Vertex(4), Vertex(5), 
             Vertex(6)]
