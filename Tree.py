@@ -69,6 +69,18 @@ class BFSTree:
         for vertex in addedVertecies:
             self.search(vertex, treeVertecies, depth + 1)
 
+    def findPath(self, root, goal):
+        path = PathConstructor(root)
+        if path.current == goal:
+            return path
+        return self.goToNext(root, path, goal)
+    
+    def goToNext(self, root, path):
+        for n in root.neighbors:
+            if n not in path.pathAsVertecies:
+                return
+
+
     def printTree(self):
         for vertex in self.vertexSet:
             print(f"{vertex.name} ")

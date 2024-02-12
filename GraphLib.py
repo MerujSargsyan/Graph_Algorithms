@@ -35,6 +35,16 @@ class PathConstructor:
         
         self.pathAsEdges.append(edge)
         self.pathAsVertecies.append(edge.v2)
+        self.current = edge.v2
+        return self
+    def printPath(self):
+        string = ""
+        for i in range(len(self.pathAsVertecies)):
+            if i%2 == 0:
+                string += self.pathAsVertecies[i]
+            else:
+                string += self.pathAsEdges[i]
+        print(string)
 
         
 

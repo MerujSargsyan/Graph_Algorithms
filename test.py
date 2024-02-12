@@ -12,7 +12,5 @@ edgeSet = [Edge(vertexSet[0],vertexSet[1]),
             Edge(vertexSet[3],vertexSet[4])]
 graph = Graph(vertexSet, edgeSet)
 
-tree1 = BFSTree(graph)
-tree2 = DFSTree(graph)
-tree1.printDepthMap()
-tree2.printDepthMap()
+path = graph.findPath(vertexSet[0], vertexSet[5])
+print(path)

@@ -1,4 +1,4 @@
-from Tree import BFSTree
+from Tree import DFSTree
 from GraphLib import *
 
 class Graph:
@@ -34,16 +34,12 @@ class Graph:
             groupB.append(vertex)        
         return True
     
-    def findCyclesAtV(self, length, root):
-        try: 
-            # swap root to front of list
-            index = self.vertexSet.index(root)
-            temp = self.vertexSet[0]
-            self.vertexSet[0] = root
-            self.vertexSet[index] = temp
-        except:
-            print("vertex not in list")
-            return 
+    def findPath(self, v1, v2):
+        tree = DFSTree(self)
+        return tree.findPath(v1, v2)
 
+    def nextVertex(self, v, currentPath, goal):
+        if currentPath.current == goal:
+            return currentPath
 
         
