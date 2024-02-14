@@ -12,5 +12,10 @@ edgeSet = [Edge(vertexSet[0],vertexSet[1]),
             Edge(vertexSet[3],vertexSet[4])]
 graph = Graph(vertexSet, edgeSet)
 
-path = graph.findPath(vertexSet[0], vertexSet[5])
-print(path)
+path = PathConstructor(vertexSet[0])
+
+for i in range(len(vertexSet)):
+    if i+1 < len(vertexSet):
+        edge = Edge(vertexSet[i], vertexSet[i+1])
+        path.add(edge)
+path.printPath()

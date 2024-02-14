@@ -20,6 +20,9 @@ class Edge:
         self.v2 = v2
         v1.addNeighbor(v2)
         v2.addNeighbor(v1)
+    
+    def toString(self):
+        return f"<{self.v1.name}, {self.v2.name}>"
 
 class PathConstructor:
     def __init__(self, start):
@@ -31,20 +34,24 @@ class PathConstructor:
     def add(self, edge):
         if edge.v1 != self.current:
             print(f"Edge is not at current vertex: {self.current.name}")
-            return
+            return self
         
         self.pathAsEdges.append(edge)
         self.pathAsVertecies.append(edge.v2)
         self.current = edge.v2
         return self
+
     def printPath(self):
         string = ""
-        for i in range(len(self.pathAsVertecies)):
-            if i%2 == 0:
-                string += self.pathAsVertecies[i]
+        i = 0
+        while i < len(self.pathAsVertecies):
+            if i == len(self.pathAsEdges):
+                string += f"{self.pathAsVertecies[i].name}"
             else:
-                string += self.pathAsEdges[i]
+                string += f"{self.pathAsVertecies[i].name} {self.pathAsEdges[i].toString()} "
+            i += 1
         print(string)
+        
 
         
 
