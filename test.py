@@ -11,11 +11,6 @@ edgeSet = [Edge(vertexSet[0],vertexSet[1]),
             Edge(vertexSet[2],vertexSet[3]),
             Edge(vertexSet[3],vertexSet[4])]
 graph = Graph(vertexSet, edgeSet)
+tree = BFSTree(graph)
+tree2 = DFSTree(graph)
 
-path = PathConstructor(vertexSet[0])
-
-for i in range(len(vertexSet)):
-    if i+1 < len(vertexSet):
-        edge = Edge(vertexSet[i], vertexSet[i+1])
-        path.add(edge)
-path.printPath()

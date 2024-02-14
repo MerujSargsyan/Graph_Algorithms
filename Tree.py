@@ -1,10 +1,32 @@
 from GraphLib import *
 
-class DFSTree:
+class Tree:
     def __init__(self, graph):
         self.vertexSet = sortVertecies(graph.vertexSet)
         self.edgeSet = []
         self.depthMap = {}
+    
+    def printDepthMap(self):
+        for key, value in self.depthMap.items():
+            print(f"{key}: {self.printValueArray(value)}")
+        print("\n")
+    
+    def printValueArray(self, value):
+        outputStr = "["
+        for vertex in value:
+            outputStr += f"{vertex.name}, "
+        
+        return outputStr + "]"
+
+    def printTree(self):
+        for vertex in self.vertexSet:
+            print(f"{vertex.name} ")
+        for edge in self.edgeSet:
+            print(f"{edge.v1.name}, {edge.v2.name}")
+
+class DFSTree(Tree):
+    def __init__(self, graph):
+        super().__init__(graph)
         self.constructDFSTree()
 
     def constructDFSTree(self):
@@ -23,29 +45,9 @@ class DFSTree:
                 self.depthMap.setdefault(depth + 1, []).append(vertex)
                 self.search(vertex, treeVertecies, depth + 1)
 
-    def printDepthMap(self):
-        for key, value in self.depthMap.items():
-            print(f"{key}: {self.printValueArray(value)}")
-        print("\n")
-
-    def printValueArray(self, value):
-        outputStr = "["
-        for vertex in value:
-            outputStr += f"{vertex.name}, "
-        
-        return outputStr + "]"
-
-    def printTree(self):
-        for vertex in self.vertexSet:
-            print(f"{vertex.name} ")
-        for edge in self.edgeSet:
-            print(f"{edge.v1.name}, {edge.v2.name}")
-
-class BFSTree:
+class BFSTree(Tree):
     def __init__(self, graph):
-        self.vertexSet = sortVertecies(graph.vertexSet)
-        self.edgeSet = []
-        self.depthMap = {}
+        super().__init__(graph)
         self.constructBFSTree()
 
     def constructBFSTree(self):
@@ -64,40 +66,9 @@ class BFSTree:
                 #if layer is empty, new array is created,
                 #otherwise, the array at the level is returned
                 self.depthMap.setdefault(depth + 1, []).append(vertex)
-                
-        
+
         for vertex in addedVertecies:
             self.search(vertex, treeVertecies, depth + 1)
-
-    def findPath(self, root, goal):
-        path = PathConstructor(root)
-        if path.current == goal:
-            return path
-        return self.goToNext(root, path, goal)
-    
-    def goToNext(self, root, path):
-        for n in root.neighbors:
-            if n not in path.pathAsVertecies:
-                return
-
-
-    def printTree(self):
-        for vertex in self.vertexSet:
-            print(f"{vertex.name} ")
-        for edge in self.edgeSet:
-            print(f"{edge.v1.name}, {edge.v2.name}")
-    
-    def printDepthMap(self):
-        for key, value in self.depthMap.items():
-            print(f"{key}: {self.printValueArray(value)}")
-        print("\n")
-    
-    def printValueArray(self, value):
-        outputStr = "["
-        for vertex in value:
-            outputStr += f"{vertex.name}, "
-        
-        return outputStr + "]"
     
 
 
