@@ -51,6 +51,8 @@ class PathConstructor:
                 string += f"{self.pathAsVertecies[i].name} {self.pathAsEdges[i].toString()} "
             i += 1
         print(string)
+
+
         
 
         
