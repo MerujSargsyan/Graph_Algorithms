@@ -24,6 +24,13 @@ class Edge:
     def toString(self):
         return f"<{self.v1.name}, {self.v2.name}>"
 
+    def __eq__(self, edge):
+        return (self.v1 == edge.v1 and self.v2 == edge.v2) or (self.v1 == edge.v2 
+            and self.v2 == edge.v1)
+
+    def __hash__(self):
+        vertecies = (hash(self.v1), hash(self.v2))
+        return hash(tuple(sorted(vertecies)))
 class PathConstructor:
     def __init__(self, start):
         self.start = start
