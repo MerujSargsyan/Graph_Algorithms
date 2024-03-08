@@ -59,13 +59,16 @@ def createSimpleGraph(n, strength):
     vertexSet = []
     edgeSet = set()
     for i in range(n):
-        vertexSet.add(Vertex(i))
+        vertexSet.append(Vertex(i))
     
     for vertex in vertexSet:
         # new set that doesn't include the current vertex
-        validSet = vertexSet.copy().remove(vertex)
+        temp = vertexSet.copy()
+        temp.remove(vertex)
+        validSet = temp
         for i in range(strength):
-            edgeSet.add(Edge(vertex, random.randint(0, range(validSet))))
+            idx = random.randint(0, len(validSet)-1)
+            edgeSet.add(Edge(vertex, validSet[idx]))
     
     return Graph(vertexSet, edgeSet)
 

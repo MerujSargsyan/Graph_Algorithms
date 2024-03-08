@@ -2,6 +2,6 @@ from GraphLib import *
 from Tree import *
 from Graph import *
 
-graph = createSimpleBipartite(5, 2)
+graph = createSimpleGraph(5, 10)
 print(graph.toString())
 
